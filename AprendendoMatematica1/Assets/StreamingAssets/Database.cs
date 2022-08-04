@@ -3,58 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mono.Data.Sqlite;
 using System.IO;
+using UnityEngine.Networking;
 
 public class Database : MonoBehaviour
 {
     //Nome do banco de dados
-    public string DatabaseName;
+    public string databaseName;
     //Caminho do banco de dados
     protected string databasePath;
     protected SqliteConnection Connection => new SqliteConnection($"Data Source = {this.databasePath};");
     private void Awake()
     {
         //verifica se nome do DB foi informado
-        if (string.IsNullOrEmpty(this.DatabaseName))
+        if (string.IsNullOrEmpty(this.databaseName))
         {
             Debug.LogError("Nome do database não informado!");
             return;
         }
         //CreateDatabaseFileIfNotExists();
+        CopyDatabaseFileIfNotExists();
 
     }
     private void CopyDatabaseFileIfNotExists()
     {
-        this.databasePath = Path.Combine(Application.persistentDataPath, this.DatabaseName);
+        this.databasePath = Path.Combine(Application.persistentDataPath, this.databaseName);
         //Se file existe retorna
         if (File.Exists(this.databasePath))
-          return;
+            return;
 
         var originalDatabasePath = string.Empty;
         var isAndroid = false;
         //if de decisão para uso da inicializacao do banco usando stream assets path
 #if UNITY_EDITOR || UNITY_WP8 || UNITY_WINRT
-     originalDatabasePath = Path.Combine(Application.streamAssetsPath, this.DatabaseName);
+      originalDatabasePath = Path.Combine(Application.streamingAssetsPath, this.databaseName);
 #elif UNITY_STANDALONE_OSX
-     originalDatabasePath = Path.Combine(Application.dataPath, "/Ressources/Data/StreamingAssets/",this.DatabaseName);
+      originalDatabasePath = Path.Combine(Application.dataPath, "/Ressources/Data/StreamingAssets/",this.databaseName);
 #elif UNITY_IOS
-      originalDatabasePath = Path.Combine(Application.dataPath, "/Raw/",this.DatabaseName); 
+      originalDatabasePath = Path.Combine(Application.dataPath, "/Raw/",this.databaseName); 
 #elif UNITY_ANDROID
       isAndroid = true;
-      originalDatabasePath = "jar:file://" + Application.dataPath + "!/assets" + this.DatabaseName;
+      originalDatabasePath = "jar:file://" + Application.dataPath + "!/assets" + this.databaseName;
       StartCoroutine(GetInternalFileAndroid(originalDatabasePath
 #endif
         //Se não for android ira executar, pois android já esta copiando no metodo
         if (!isAndroid)
         {
             File.Copy(originalDatabasePath, this.databasePath);
+            Debug.Log($"Database caminho: {this.databasePath}");
         }
+
     }
+
     //Criar banco de dados se ele ainda não existe
     private void CreateDatabaseFileIfNotExists()
     {
         //informando caminho de criacao do DB
         //Usando Path.Combine para combinar string do caminho com nome do BD
-        this.databasePath = Path.Combine(Application.persistentDataPath, this.DatabaseName);
+        this.databasePath = Path.Combine(Application.persistentDataPath, this.databaseName);
         if (!File.Exists(this.databasePath))
         {
             SqliteConnection.CreateFile(this.databasePath);
@@ -66,10 +71,11 @@ public class Database : MonoBehaviour
         var request = UnityWebRequest.Get(path);
         yield return request.SendWebRequest();
 
-        if(request.isHttpError || request.isNetworkError)
+        if (request.isHttpError || request.isNetworkError)
         {
-            Debug.LogError($"Error build Android File:{request.error}")
-        }else
+            Debug.LogError($"Error build Android File:{request.error}");
+        }
+        else
         {
             File.WriteAllBytes(this.databasePath, request.downloadHandler.data);
             Debug.LogError("Arquivo copiado!");

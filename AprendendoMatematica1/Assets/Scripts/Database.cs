@@ -14,6 +14,7 @@ public class Database : MonoBehaviour
     protected SqliteConnection Connection => new SqliteConnection($"Data Source = {this.databasePath};");
     private void Awake()
     {
+        
         //verifica se nome do DB foi informado
         if (string.IsNullOrEmpty(this.databaseName))
         {
@@ -22,8 +23,17 @@ public class Database : MonoBehaviour
         }
         //CreateDatabaseFileIfNotExists();
         CopyDatabaseFileIfNotExists();
+        try
+        {
+            CreateTable();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
 
     }
+    #region Criacao DB
     private void CopyDatabaseFileIfNotExists()
     {
         this.databasePath = Path.Combine(Application.persistentDataPath, this.databaseName);
@@ -88,5 +98,27 @@ public class Database : MonoBehaviour
             File.WriteAllBytes(this.databasePath, request.downloadHandler.data);
             Debug.LogError("Arquivo copiado!");
         }
+    }
+    #endregion
+    protected void CreateTable()
+    {
+        using (var con = Connection)
+        {
+            var commandText = $"Create Table CadastroJogador,"+
+                $"(" +
+                $" Id_jogador INTEGER PRIMARY KEY," +
+                $" Nome_jogador TEXT NOT NULL," +
+                $");";
+
+            con.Open();
+
+            using (var command = con.CreateCommand())
+            {
+                command.CommandText = commandText;
+                command.ExecuteNonQuery();
+                Debug.Log("Command");
+            }
+            
+        } 
     }
 }

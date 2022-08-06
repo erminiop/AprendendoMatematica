@@ -237,7 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fcaf552bf37bf4b81933419861282d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  databaseName: Teste
+  databaseName: TesteDB2
+  databasePath: 
 --- !u!81 &1975956080
 AudioListener:
   m_ObjectHideFlags: 0

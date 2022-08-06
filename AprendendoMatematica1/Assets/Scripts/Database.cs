@@ -29,7 +29,11 @@ public class Database : MonoBehaviour
         this.databasePath = Path.Combine(Application.persistentDataPath, this.databaseName);
         //Se file existe retorna
         if (File.Exists(this.databasePath))
+        {
+            Debug.Log($"aqui Database caminho: {this.databasePath}");
             return;
+        }
+            
 
         var originalDatabasePath = string.Empty;
         var isAndroid = false;
@@ -43,11 +47,15 @@ public class Database : MonoBehaviour
 #elif UNITY_ANDROID
       isAndroid = true;
       originalDatabasePath = "jar:file://" + Application.dataPath + "!/assets" + this.databaseName;
-      StartCoroutine(GetInternalFileAndroid(originalDatabasePath
+      StartCoroutine(GetInternalFileAndroid(originalDatabasePath));
 #endif
+
+      
         //Se não for android ira executar, pois android já esta copiando no metodo
         if (!isAndroid)
         {
+            Debug.Log($"Database caminho: {this.databasePath}");
+            Debug.Log($"Database origem: {originalDatabasePath}");
             File.Copy(originalDatabasePath, this.databasePath);
             Debug.Log($"Database caminho: {this.databasePath}");
         }

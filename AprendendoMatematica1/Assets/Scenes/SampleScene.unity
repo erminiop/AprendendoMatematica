@@ -202,6 +202,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -234,11 +235,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1975956078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37fcaf552bf37bf4b81933419861282d, type: 3}
+  m_Script: {fileID: 11500000, guid: bc1a3cb5e86a9594191fb55a97533e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   databaseName: TesteDB2
-  databasePath: 
 --- !u!81 &1975956080
 AudioListener:
   m_ObjectHideFlags: 0
@@ -300,6 +300,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

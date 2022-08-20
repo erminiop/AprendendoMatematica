@@ -26,7 +26,10 @@ public class Database : MonoBehaviour
         CopyDatabaseFileIfNotExists();
         try
         {
-            CreateTable();
+            CreateTableJogador();
+            CreateTableMonstro();
+            CreateTablePontuacao();
+
         }
         catch (Exception e)
         {
@@ -101,25 +104,109 @@ public class Database : MonoBehaviour
         }
     }
     #endregion
-    protected void CreateTable()
+    #region Criacao Tabelas
+    protected void CreateTableJogador()
     {
         using (var con = Connection)
         {
-            var commandText = $"Create Table CadastroJogador"+
+            
+            var commandTableJogador = $"Create Table CadastroJogador" +
                 $"(" +
-                $" Id_jogador INTEGER PRIMARY KEY," +
-                $" Nome_jogador TEXT NOT NULL" +
+                $" Id INTEGER PRIMARY KEY NOT NULL," +
+                $" Nome_jogador TEXT NOT NULL," +
+                $" Idade INTEGER," +
+                $" Idioma TEXT NOT NULL" +
+                $");";
+
+            var commandTablePontuacao = $"Create Table PontuacaoJogador" +
+                $"(" +
+                $" Id_jogador INTEGER," +
+                $" Livros_coletados INTEGER," +
+                $" Fase INTEGER," +
+                $" Porcentagem_acerto REAL," +
+                $" Pontuacao_total INTEGER, " +
+                $" FOREIGN kEY (Id_jogador) REFERENCES CadastroJogador(Id) ON UPDATE CASCADE" +
+                $");";
+
+            var commandTableMonstro = $"Create Table Monstro" +
+                $"(" +
+                $" nome_Monstro PRIMARY KEY," +
+                $" vel_Monstro REAL," +
+                $" alcance REAL," +
+                $" dano REAL," +
+                $" vida REAL" +
                 $");";
 
             con.Open();
 
             using (var command = con.CreateCommand())
             {
-                command.CommandText = commandText;
+                command.CommandText = commandTableJogador;
                 command.ExecuteNonQuery();
-                Debug.Log("Command");
+                Debug.Log("Cria Tabela Jogador");
+                command.CommandText = commandTablePontuacao;
+                command.ExecuteNonQuery();
+                Debug.Log("Cria Tabela Pontuacao");
+                command.CommandText = commandTableMonstro;
+                command.ExecuteNonQuery();
+                Debug.Log("Cria Tabela Monstro");
             }
-            
+
         } 
     }
+    protected void CreateTablePontuacao()
+    {
+        using (var con = Connection)
+        {
+            var commandTablePontuacao = $"Create Table PontuacaoJogador" +
+                $"(" +
+                $" Id_jogador INTEGER," +
+                $" Livros_coletados INTEGER," +
+                $" Fase INTEGER," +
+                $" Porcentagem_acerto REAL," +
+                $" Pontuacao_total INTEGER, " +
+                $" FOREIGN kEY (Id_jogador) REFERENCES CadastroJogador(Id_jogador) ON UPDATE CASCADE" +
+                $");";
+
+            
+            con.Open();
+
+            using (var command = con.CreateCommand())
+            {
+                
+                command.CommandText = commandTablePontuacao;
+                command.ExecuteNonQuery();
+                Debug.Log("Cria Tabela Pontuacao");
+                
+            }
+
+        }
+    }
+    protected void CreateTableMonstro()
+    {
+        using (var con = Connection)
+        {
+
+            
+            var commandTableMonstro = $"Create Table Monstro" +
+                $"(" +
+                $" nome_Monstro PRIMARY KEY," +
+                $" vel_Monstro REAL," +
+                $" alcance REAL," +
+                $" dano REAL," +
+                $" vida REAL" +
+                $");";
+
+            con.Open();
+
+            using (var command = con.CreateCommand())
+            {
+                command.CommandText = commandTableMonstro;
+                command.ExecuteNonQuery();
+                Debug.Log("Cria Tabela Monstro");
+            }
+
+        }
+    }
+#endregion
 }

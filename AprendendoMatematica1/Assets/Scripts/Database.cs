@@ -4,6 +4,7 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.IO;
 using UnityEngine.Networking;
+using System;
 
 public class Database : MonoBehaviour
 {
@@ -104,10 +105,10 @@ public class Database : MonoBehaviour
     {
         using (var con = Connection)
         {
-            var commandText = $"Create Table CadastroJogador,"+
+            var commandText = $"Create Table CadastroJogador"+
                 $"(" +
                 $" Id_jogador INTEGER PRIMARY KEY," +
-                $" Nome_jogador TEXT NOT NULL," +
+                $" Nome_jogador TEXT NOT NULL" +
                 $");";
 
             con.Open();

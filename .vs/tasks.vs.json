@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "tarefa-Scripts",
+      "appliesTo": "AprendendoMatematica1/Assets/Scripts/",
+      "type": "launch"
+    }
+  ]
+}

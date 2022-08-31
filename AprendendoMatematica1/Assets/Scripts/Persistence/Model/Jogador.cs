@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Jogador
 {
+    public Jogador()
+    {
+    }
+
     public Jogador(int id, string nome_jogador, int idade, string idioma)
     {
         Id = id;

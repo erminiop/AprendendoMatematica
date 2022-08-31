@@ -10,7 +10,7 @@ namespace Assets.Scripts.Persistence.DAO.Specification
     {
         ISqliteConnectionProvider ConnectionProvider { get; }
         bool SetJogador(Jogador jogador);
-        bool getJogador(int Id);
+        Jogador getJogador(int Id);
         bool UpdateJogador(Jogador jogador);
         bool DeleteJogador(int Id);
 

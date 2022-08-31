@@ -32,9 +32,32 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
             }
         }
 
-        public bool getJogador(int Id)
+        public Jogador getJogador(int Id)
         {
-            throw new NotImplementedException();
+            var commandText = "SELECT FROM CadastroJogador WHERE Id= @id;";
+            Jogador returnJogador = null;
+            using( var connection = ConnectionProvider.Connection)
+            {
+                connection.Open();
+                using(var command = connection.CreateCommand())
+                {
+                    command.CommandText= commandText;
+                    command.Parameters.AddWithValue("@id", Id);
+
+                    var reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        returnJogador = new Jogador();
+
+                        returnJogador.Id = reader.GetInt32(0); ;
+                        returnJogador.Nome_jogador = reader.GetString(1);
+                        returnJogador.Idade = reader.GetInt32(2);
+                        returnJogador.Idioma = reader.GetString(3);
+                    }
+                }
+            }
+            return returnJogador;
+
         }
 
         public bool SetJogador(Jogador jogador)

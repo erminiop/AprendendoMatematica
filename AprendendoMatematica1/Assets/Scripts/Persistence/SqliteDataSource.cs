@@ -5,8 +5,9 @@ using Mono.Data.Sqlite;
 using System.IO;
 using UnityEngine.Networking;
 using System;
+using Assets.Scripts.Persistence.DAO.Specification;
 
-public class SqliteDataSource 
+public class SqliteDataSource : ISqliteConnectionProvider
 {
     //Nome do banco de dados
     public string databaseName;

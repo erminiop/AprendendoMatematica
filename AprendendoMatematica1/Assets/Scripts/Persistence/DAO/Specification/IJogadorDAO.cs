@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Persistence.DAO.Specification
 {
-    interface IJogadorDAO
+    public interface IJogadorDAO
     {
+        ISqliteConnectionProvider ConnectionProvider { get; }
+        bool SetJogador(Jogador jogador);
+        bool getJogador(int Id);
+        bool UpdateJogador(Jogador jogador);
+        bool DeleteJogador(int Id);
+
+
     }
 }

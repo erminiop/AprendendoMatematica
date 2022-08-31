@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Persistence.DAO.Specification
 {
-    interface IMonstroDAO
+    public interface IMonstroDAO
     {
+        ISqliteConnectionProvider ConnectionProvider { get; }
+        bool SetMonstro(Monstro monstro);
+        bool getMonstro(int Id);
+        bool UpdateMonstro(Monstro monstro);
+        bool DeleteMonstro(int Id);
+
     }
 }

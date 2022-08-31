@@ -9,12 +9,12 @@ public class Jogador
         Id = id;
         Nome_jogador = nome_jogador;
         Idade = idade;
-        this.idioma = idioma;
+        Idioma = idioma;
     }
 
     public int Id { get; set; }
     public string Nome_jogador { get; set; }
     public int Idade { get; set; }
-    public string idioma { get; set; }
+    public string Idioma { get; set; }
 
 }

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Persistence.DAO.Specification
     {
         ISqliteConnectionProvider ConnectionProvider { get; }
         bool SetMonstro(Monstro monstro);
-        bool getMonstro(int Id);
+        Monstro getMonstro(int Id);
         bool UpdateMonstro(Monstro monstro);
         bool DeleteMonstro(int Id);
 

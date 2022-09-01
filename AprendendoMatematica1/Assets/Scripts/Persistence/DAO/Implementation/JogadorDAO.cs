@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Persistence.DAO.Specification;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,7 +51,7 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
                     {
                         returnJogador = new Jogador();
 
-                        returnJogador.Id = reader.GetInt32(0); ;
+                        returnJogador.Id = reader.GetInt32(0);
                         returnJogador.Nome_jogador = reader.GetString(1);
                         returnJogador.Idade = reader.GetInt32(2);
                         returnJogador.Idioma = reader.GetString(3);

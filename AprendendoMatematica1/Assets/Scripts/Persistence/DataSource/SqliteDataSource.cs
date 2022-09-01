@@ -136,11 +136,11 @@ public class SqliteDataSource : ISqliteConnectionProvider
 
             var commandTableMonstro = $"Create Table Monstro" +
                 $"(" +
-                $" nome_Monstro PRIMARY KEY," +
-                $" vel_Monstro REAL," +
-                $" alcance REAL," +
-                $" dano REAL," +
-                $" vida REAL" +
+                $" Nome_Monstro PRIMARY KEY," +
+                $" Vel_Monstro REAL," +
+                $" Alcance REAL," +
+                $" Dano REAL," +
+                $" Vida REAL" +
                 $");";
 
             con.Open();

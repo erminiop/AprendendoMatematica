@@ -34,12 +34,16 @@ public class GamesCodeDataSource : SqliteDataSource
 
 protected void Awake()
     {
-        JogadorDAO = new JogadorDAO(Instance);
-        MonstroDAO = new MonstroDAO(Instance);
+        this.databaseName = "GameDB.db";
+        this.CopyDatabase = true;
+
+        
+
         try
         {
-            this.databaseName = "GameDB.db";
-            this.CopyDatabase = true;
+            base.Awake();
+            JogadorDAO = new JogadorDAO(Instance);
+            MonstroDAO = new MonstroDAO(Instance);
 
 
         }
@@ -47,6 +51,6 @@ protected void Awake()
         {
             Debug.LogError($"Database não criado:!{ex.Message}");
         }
-        
+        print("Awake Data Source"); 
     }
 }

@@ -18,9 +18,9 @@ public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
     public SqliteConnection Connection => new SqliteConnection($"Data Source = {this.databasePath};");
 
     [SerializeField]protected bool CopyDatabase;
-    private void Awake()
+    public void Awake()
     {
-        Debug.LogError($"passou aqui{this.databasePath}"+$"===Nome é{this.databaseName}");
+        
         //verifica se nome do DB foi informado
         if (string.IsNullOrEmpty(this.databaseName))
         {

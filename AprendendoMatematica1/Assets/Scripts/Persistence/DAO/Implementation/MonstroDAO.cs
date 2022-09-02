@@ -35,7 +35,7 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
 
         public Monstro getMonstro(int Id)
         {
-            var commandText = "SELECT FROM Monstro WHERE Id= @id;";
+            var commandText = "SELECT * FROM Monstro WHERE Id= @id;";
             Monstro returnMonstro = null;
             
             using (var connection = ConnectionProvider.Connection)
@@ -49,13 +49,24 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
                     var reader = command.ExecuteReader();
                     if (reader.Read())
                     {
+                        string nome_monstro = null;
+                        float vel_monstro;
+                        float alcance;
+                        float dano;
+                        float vida;
+
                         //returnMonstro = new Monstro();
 
                         returnMonstro.Nome_Monstro = reader.GetString(0);
+                        nome_monstro=reader.GetString(0);
                         returnMonstro.Vel_Monstro = reader.GetFloat(1);
+                        vel_monstro=reader.GetFloat(1);
                         returnMonstro.Alcance = reader.GetFloat(2);
+                        alcance=reader.GetFloat(2);
                         returnMonstro.Dano = reader.GetFloat(3);
+                        dano=reader.GetFloat(3);
                         returnMonstro.Vida = reader.GetFloat(4);
+                        vida=reader.GetFloat(4);
 
                     }
                 }

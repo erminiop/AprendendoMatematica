@@ -2,23 +2,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Assets.Scripts.Persistence.DAO.Implementation
 {
     public class JogadorDAO : IJogadorDAO
     {
-        public ISqliteConnectionProvider ConnectionProvider {get; protected set;}
+        public ISqliteConnectionProvider ConnectionProvider { get; protected set; }
+        public JogadorDAO(ISqliteConnectionProvider connectionProvider) => ConnectionProvider = connectionProvider;
 
-        public JogadorDAO(ISqliteConnectionProvider connectionProvider)
-        {
-            ConnectionProvider = connectionProvider;
-        }
-
-        public bool DeleteJogador(int Id)
+       public bool DeleteJogador(int Id)
         {
             var commandText = "DELETE FROM CadastroJogador WHERE Id = @Id;";
             using (var connection = ConnectionProvider.Connection)
@@ -36,7 +29,7 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
 
         public Jogador getJogador(int Id)
         {
-            var commandText = "SELECT FROM CadastroJogador WHERE Id= @id;";
+            var commandText = "SELECT * FROM CadastroJogador WHERE Id= @id;";
             Jogador returnJogador = null;
 
             using( var connection = ConnectionProvider.Connection)
@@ -56,13 +49,13 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
                         string idioma;
                         //returnJogador = new Jogador();
                         
-                        returnJogador.Id = reader.GetInt32(0);
+                        //returnJogador.Id = reader.GetInt32(0);
                         id= reader.GetInt32(0);
-                        returnJogador.Nome_jogador = reader.GetString(1);
+                        //returnJogador.Nome_jogador = reader.GetString(1);
                         nome= reader.GetString(1);
-                        returnJogador.Idade = reader.GetInt32(2);
+                        //returnJogador.Idade = reader.GetInt32(2);
                         idade= reader.GetInt32(2);
-                        returnJogador.Idioma = reader.GetString(3);
+                        //returnJogador.Idioma = reader.GetString(3);
                         idioma= reader.GetString(3);
 
                         returnJogador = new Jogador(id,nome,idade,idioma);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monstro : MonoBehaviour
+public class Monstro
 {
     public string Nome_Monstro { get; set; }
     public float Vel_Monstro { get; set; }

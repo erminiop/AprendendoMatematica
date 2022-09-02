@@ -49,7 +49,7 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
                     var reader = command.ExecuteReader();
                     if (reader.Read())
                     {
-                        returnMonstro = new Monstro();
+                        //returnMonstro = new Monstro();
 
                         returnMonstro.Nome_Monstro = reader.GetString(0);
                         returnMonstro.Vel_Monstro = reader.GetFloat(1);

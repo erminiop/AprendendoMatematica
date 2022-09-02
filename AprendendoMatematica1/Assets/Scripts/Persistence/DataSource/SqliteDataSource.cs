@@ -7,18 +7,20 @@ using UnityEngine.Networking;
 using System;
 using Assets.Scripts.Persistence.DAO.Specification;
 
-public class SqliteDataSource : ISqliteConnectionProvider
+
+public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
 {
     //Nome do banco de dados
     public string databaseName;
     //Caminho do banco de dados
     protected string databasePath;
+    
     public SqliteConnection Connection => new SqliteConnection($"Data Source = {this.databasePath};");
 
     [SerializeField]protected bool CopyDatabase;
     private void Awake()
     {
-        
+        Debug.LogError($"passou aqui{this.databasePath}"+$"===Nome é{this.databaseName}");
         //verifica se nome do DB foi informado
         if (string.IsNullOrEmpty(this.databaseName))
         {
@@ -50,7 +52,7 @@ public class SqliteDataSource : ISqliteConnectionProvider
         //Se file existe retorna
         if (File.Exists(this.databasePath))
         {
-            Debug.Log($"aqui r caminho: {this.databasePath}");
+            Debug.Log($"aqui o caminho: {this.databasePath}");
             return;
         }
             
@@ -74,10 +76,10 @@ public class SqliteDataSource : ISqliteConnectionProvider
         //Se não for android ira executar, pois android já esta copiando no metodo
         if (!isAndroid)
         {
-            Debug.Log($"r caminho: {this.databasePath}");
-            Debug.Log($"r origem: {originalDatabasePath}");
+            Debug.Log($"O caminho: {this.databasePath}");
+            Debug.Log($"O origem: {originalDatabasePath}");
             File.Copy(originalDatabasePath, this.databasePath);
-            Debug.Log($"r caminho: {this.databasePath}");
+            Debug.Log($"O caminho: {this.databasePath}");
         }
 
     }
@@ -91,7 +93,7 @@ public class SqliteDataSource : ISqliteConnectionProvider
         if (!File.Exists(this.databasePath))
         {
             SqliteConnection.CreateFile(this.databasePath);
-            Debug.Log($"r caminho: {this.databasePath}");
+            Debug.Log($"O caminho: {this.databasePath}");
         }
     }
     private IEnumerator GetInternalFileAndroid(string path)

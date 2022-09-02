@@ -38,6 +38,7 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
         {
             var commandText = "SELECT FROM CadastroJogador WHERE Id= @id;";
             Jogador returnJogador = null;
+
             using( var connection = ConnectionProvider.Connection)
             {
                 connection.Open();
@@ -49,12 +50,22 @@ namespace Assets.Scripts.Persistence.DAO.Implementation
                     var reader = command.ExecuteReader();
                     if (reader.Read())
                     {
-                        returnJogador = new Jogador();
-
+                        int id;
+                        string nome;
+                        int idade;
+                        string idioma;
+                        //returnJogador = new Jogador();
+                        
                         returnJogador.Id = reader.GetInt32(0);
+                        id= reader.GetInt32(0);
                         returnJogador.Nome_jogador = reader.GetString(1);
+                        nome= reader.GetString(1);
                         returnJogador.Idade = reader.GetInt32(2);
+                        idade= reader.GetInt32(2);
                         returnJogador.Idioma = reader.GetString(3);
+                        idioma= reader.GetString(3);
+
+                        returnJogador = new Jogador(id,nome,idade,idioma);
                     }
                 }
             }

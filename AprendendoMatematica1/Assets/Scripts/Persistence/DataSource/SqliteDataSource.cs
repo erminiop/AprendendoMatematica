@@ -18,7 +18,7 @@ public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
     public SqliteConnection Connection => new SqliteConnection($"Data Source = {this.databasePath};");
 
     [SerializeField]protected bool CopyDatabase;
-    public void Awake()
+    protected void Awake()
     {
         
         //verifica se nome do DB foi informado
@@ -28,31 +28,17 @@ public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
             return;
         }
         
-        try
-        {
-            if (this.CopyDatabase)
-            {
-                CopyDatabaseFileIfNotExists();
-            }
-            else
-            {
-                //CreateDatabaseFileIfNotExists();
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e.Message);
-        }
-
+        CopyDatabaseFileIfNotExists();
+       
     }
-    #region Criacao DB
+    #region Copia DB
     private void CopyDatabaseFileIfNotExists()
     {
         this.databasePath = Path.Combine(Application.persistentDataPath, this.databaseName);
         //Se file existe retorna
         if (File.Exists(this.databasePath))
         {
-            Debug.Log($"aqui o caminho: {this.databasePath}");
+            Debug.Log($"Database já criado no caminho : {this.databasePath}");
             return;
         }
             
@@ -76,10 +62,12 @@ public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
         //Se não for android ira executar, pois android já esta copiando no metodo
         if (!isAndroid)
         {
+
+            /* debug usados para teste e retronar caminho do arquivo onde foi copiado
             Debug.Log($"O caminho: {this.databasePath}");
-            Debug.Log($"O origem: {originalDatabasePath}");
+            Debug.Log($"O origem: {originalDatabasePath}");*/
             File.Copy(originalDatabasePath, this.databasePath);
-            Debug.Log($"O caminho: {this.databasePath}");
+            //Debug.Log($"O caminho: {this.databasePath}");
         }
 
     }
@@ -93,7 +81,7 @@ public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
         if (!File.Exists(this.databasePath))
         {
             SqliteConnection.CreateFile(this.databasePath);
-            Debug.Log($"O caminho: {this.databasePath}");
+            //Debug.Log($"O caminho: {this.databasePath}");
         }
     }
     private IEnumerator GetInternalFileAndroid(string path)

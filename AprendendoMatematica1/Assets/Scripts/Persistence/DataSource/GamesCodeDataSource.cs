@@ -51,6 +51,6 @@ protected void Awake()
         {
             Debug.LogError($"Database não criado:!{ex.Message}");
         }
-        print("Awake Data Source"); 
+        
     }
 }

@@ -5570,8 +5570,8 @@ TextureImporter:
       Tileset_Rock_Floor1: 21300074
       Tileset_Rock_WallRight5: 21300160
       Tileset_Rock_WallRightCeilingCorner6: 21300216
-      Tileset_Rock_WallRightCeilingCorner4: 21300208
       Tileset_Rock_WallLeftCeilingCorner5: 21300196
+      Tileset_Rock_WallRightCeilingCorner4: 21300208
       Tileset_Rock_WallLeft4: 21300128
       Tileset_Rock_FloorCornerSingleBlockLeft: 21300146
       Tileset_Rock_WallRight0: 21300034

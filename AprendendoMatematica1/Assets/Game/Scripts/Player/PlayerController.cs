@@ -16,6 +16,16 @@ public class PlayerController : MonoBehaviour
     public Sprite crouchedSprite;
     public Sprite idleSprite;
 
+    [Header("Camera")]
+
+    public Transform cameraTarget;
+    [Range(0.0f, 5.0f)]
+    public float cameraTargetOffsetX = 2.0f;
+    [Range(0.5f,50.0f)]
+    public float cameraTargetFlipSpeed = 5.0f;
+    [Range(0.0f,5.0f)]
+    public float characterSpeedInfluence = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +77,20 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.sprite = idleSprite;
         }
       
+    }
+    private void FixedUpdate()
+    {
+        //Controle do target da camera dependendo da direcao do sprite e da velocidade do jogador
+        bool isFacingRight = spriteRenderer.flipX == false;
+        float targetOffsetx = isFacingRight ? cameraTargetOffsetX : -cameraTargetOffsetX;
+
+        //Usando Mathf.Lerp, para que camera mude acompanhe o jogador de forma propocional a velocidade Time.deltaTime * cameraTargetFlipSpeed
+        float currentOffsetX = Mathf.Lerp(cameraTarget.position.x, targetOffsetx, Time.fixedDeltaTime * cameraTargetFlipSpeed);
+
+        currentOffsetX += playerMovement.CurrentVelocity.x * Time.fixedDeltaTime * characterSpeedInfluence;
+
+        cameraTarget.localPosition = new Vector3(currentOffsetX, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
+        //
     }
 
 }

@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     PlayerInput playerInput;
     CharacterMovement2D playerMovement;
     SpriteRenderer spriteRenderer;
-
-    public Sprite crouchedSprite;
-    public Sprite idleSprite;
+    //Variaveis usadas para teste antes da animacao
+   // public Sprite crouchedSprite;
+   //public Sprite idleSprite;
 
     [Header("Camera")]
 
@@ -69,12 +69,12 @@ public class PlayerController : MonoBehaviour
         {
             playerMovement.Crouch();
 
-            spriteRenderer.sprite = crouchedSprite;
+           // spriteRenderer.sprite = crouchedSprite;
         } else if (playerInput.IsCrouchBottonUP())
         {
             playerMovement.UnCrouch();
 
-            spriteRenderer.sprite = idleSprite;
+           // spriteRenderer.sprite = idleSprite;
         }
       
     }
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         float targetOffsetx = isFacingRight ? cameraTargetOffsetX : -cameraTargetOffsetX;
 
         //Usando Mathf.Lerp, para que camera mude acompanhe o jogador de forma propocional a velocidade Time.deltaTime * cameraTargetFlipSpeed
-        float currentOffsetX = Mathf.Lerp(cameraTarget.position.x, targetOffsetx, Time.fixedDeltaTime * cameraTargetFlipSpeed);
+        float currentOffsetX = Mathf.Lerp(cameraTarget.localPosition.x, targetOffsetx, Time.fixedDeltaTime * cameraTargetFlipSpeed);
 
         currentOffsetX += playerMovement.CurrentVelocity.x * Time.fixedDeltaTime * characterSpeedInfluence;
 

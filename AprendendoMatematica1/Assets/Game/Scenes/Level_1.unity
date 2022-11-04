@@ -282,90 +282,6 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
---- !u!1 &746522046 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 117150395161187363, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
-  m_PrefabInstance: {fileID: 1811470134}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &746522047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746522046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 318028bd3d83ca24dac0ec0619b46607, type: 2}
-  paused: 0
-  restartWhenFinished: 0
-  blackboard:
-    intParams: 
-    intParamsNames: []
-    intParamsLostDefaultValue: 
-    boolParams: 
-    boolParamsNames: []
-    boolParamsLostDefaultValue: 
-    floatParams: []
-    floatParamsNames: []
-    floatParamsLostDefaultValue: 
-    stringParams: []
-    stringParamsNames: []
-    stringParamsLostDefaultValue: 
-    colorParams: []
-    colorParamsNames: []
-    colorParamsLostDefaultValue: 
-    objectParams:
-    - {fileID: 1307274329}
-    - {fileID: 746522048}
-    objectParamsNames:
-    - Player
-    - AIController
-    objectParamsLostDefaultValue: 
-    layerMaskParams: []
-    layerMaskParamsNames: []
-    layerMaskParamsLostDefaultValue: 
-    enumParamsNames: []
-    enumParamsLostDefaultValue: 
-    vector2Params: []
-    vector2ParamsNames: []
-    vector2ParamsLostDefaultValue: 
-    vector3Params: []
-    vector3ParamsNames: []
-    vector3ParamsLostDefaultValue: 
-    vector4Params: []
-    vector4ParamsNames: []
-    vector4ParamsLostDefaultValue: 
-    rectParams: []
-    rectParamsNames: []
-    rectParamsLostDefaultValue: 
-    animationCurveParams: []
-    animationCurveParamsNames: []
-    animationCurveParamsLostDefaultValue: 
-    boundsParams: []
-    boundsParamsNames: []
-    boundsParamsLostDefaultValue: 
-    gradientParams: []
-    gradientParamsNames: []
-    gradientParamsLostDefaultValue: 
-    quaternionParams: []
-    quaternionParamsNames: []
-    quaternionParamsLostDefaultValue: 
---- !u!114 &746522048 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 577205285523588395, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
-  m_PrefabInstance: {fileID: 1811470134}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746522046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3621127eb2e2e274983a62bd4e0eacd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &776015676
 GameObject:
   m_ObjectHideFlags: 0
@@ -6637,6 +6553,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.94573426
       objectReference: {fileID: 0}
+    - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 1307274329}
     - target: {fileID: 1241656884696417723, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
       propertyPath: groundMaxSpeed
       value: 2

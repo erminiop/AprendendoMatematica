@@ -43,7 +43,7 @@ public class Patrol : BasePrimitiveAction
                 aiController.animator.SetInteger("State",1);
                 yield return new WaitForSeconds(2.0f);
                 walkingLeft = false;
-                aiController.flip.localScale = new Vector3(aiController.flip.localScale.x * -1, aiController.flip.localScale.y, aiController.flip.localScale.z);
+               // aiController.flip.localScale = new Vector3(aiController.flip.localScale.x * -1, aiController.flip.localScale.y, aiController.flip.localScale.z);
                 aiController.animator.SetInteger("State",2);
             }
             else
@@ -54,7 +54,7 @@ public class Patrol : BasePrimitiveAction
                 aiController.animator.SetInteger("State",1);
                 yield return new WaitForSeconds(2.0f);
                 walkingLeft = true;
-                aiController.flip.localScale = new Vector3(aiController.flip.localScale.x * -1, aiController.flip.localScale.y, aiController.flip.localScale.z) ;
+                //aiController.flip.localScale = new Vector3(aiController.flip.localScale.x * -1, aiController.flip.localScale.y, aiController.flip.localScale.z) ;
                 aiController.animator.SetInteger("State",2);
             }
         }

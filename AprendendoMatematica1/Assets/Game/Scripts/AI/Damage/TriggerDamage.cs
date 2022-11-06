@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class TriggerDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField][Min(1)] private int damage = 10;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
+        IDamageble damageble = collision.GetComponent<IDamageble>();
+        // Debug.Log("Teste: "+damageble);
+        if (damageble != null)
+        {
+           // Debug.Log("Trigger: "+collision.name);
+            damageble.TakeDamage(10);
+        }
     }
 }

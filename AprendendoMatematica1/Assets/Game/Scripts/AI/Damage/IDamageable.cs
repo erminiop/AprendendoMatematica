@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,4 +6,7 @@ using UnityEngine;
 public interface IDamageble 
 {
    void TakeDamage(int damage);
+   event Action DeathEvent;
+   bool isDead { get; }
+
 }

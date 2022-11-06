@@ -1,18 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Death : MonoBehaviour
+public class Death : MonoBehaviour, IDamageble
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool isDead {get; private set;}
 
-    // Update is called once per frame
-    void Update()
+    public event Action DeathEvent;
+
+    private void Awake()
     {
-        
+        isDead = false;   
+    }
+    public void TakeDamage(int damage)
+    {
+        //Destroy(gameObject);
+        isDead = true;
+        DeathEvent.Invoke();
     }
 }

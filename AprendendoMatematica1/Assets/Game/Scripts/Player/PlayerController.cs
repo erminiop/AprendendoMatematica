@@ -7,11 +7,13 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterMovement2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof (PlayerInput))]
+[RequireComponent (typeof(IDamageble))]
 public class PlayerController : MonoBehaviour
 {
     PlayerInput playerInput;
     CharacterMovement2D playerMovement;
     SpriteRenderer spriteRenderer;
+    IDamageble damageble;
     //Variaveis usadas para teste antes da animacao
    // public Sprite crouchedSprite;
    //public Sprite idleSprite;
@@ -32,6 +34,10 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<CharacterMovement2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
+        damageble = GetComponent<IDamageble>();
+
+        damageble.DeathEvent += OnDeath;
+
         var w = GamesCodeDataSource.Instance.JogadorDAO.getJogador(1);
         print(w.Nome_jogador);
     }
@@ -91,6 +97,19 @@ public class PlayerController : MonoBehaviour
 
         cameraTarget.localPosition = new Vector3(currentOffsetX, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
         //
+    }
+
+    private void OnDeath()
+    {
+        //Debug.Log("Damage");
+    }
+
+    private void OnDestroy()
+    {
+        if (damageble !=null)
+        {
+            damageble.DeathEvent -= OnDeath;
+        }
     }
 
 }

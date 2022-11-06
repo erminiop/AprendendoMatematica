@@ -30,6 +30,10 @@ public class ChaseTarget : BasePrimitiveAction
 
     public override TaskStatus OnUpdate()
     {
+        if(target == null)
+        {
+            return TaskStatus.ABORTED;
+        }
         Vector2 toTarget = target.transform.position - enemyAIController.transform.position;
         enemyAIController.setMovimentInputX(Mathf.Sign(toTarget.x));
         //enemyAIController.animator.SetInteger("State", 3);

@@ -1,3 +1,4 @@
+using BBUnity.Actions;
 using BBUnity.Conditions;
 using Pada1.BBCore;
 using Pada1.BBCore.Framework;
@@ -20,16 +21,30 @@ public class IsTargetVisible : GOCondition
     private float forgetTargetTime;
     public override bool Check()
     {
-        if (aiVision.IsVisible(target))
+        bool isAlive = IsAlive();
+        if (aiVision.IsVisible(target)&& isAlive)
         {
             forgetTargetTime = Time.time + targetMemoryDuration;
             return true;
         }
-        return Time.time < forgetTargetTime;
+        return Time.time < forgetTargetTime && isAlive;
 
         //bool teste=
         // return Vector2.Distance(gameObject.transform.position, target.transform.position) <5;
        // Debug.Log(teste);
        // return teste;
+    }
+    bool IsAlive()
+    {
+        if(target == null)
+        {
+            return false;
+        }
+        IDamageble damageble = target.GetComponent<IDamageble>();
+        if (damageble != null)
+        {
+            return !damageble.isDead;
+        }
+        return true;
     }
 }

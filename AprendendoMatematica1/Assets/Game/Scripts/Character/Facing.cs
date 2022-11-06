@@ -6,8 +6,8 @@ using UnityEngine;
 //[RequireComponent(typeof(Transform))]
 public class Facing : MonoBehaviour
 {
-    //Transform flip;
-    // Start is called before the first frame update
+
+    public bool facingLeft =true;
     void Start()
     {
        // Transform flip = GetComponent<Transform>();
@@ -24,13 +24,18 @@ public class Facing : MonoBehaviour
         if(movementInput.x > 0 && flip.localScale.x > 0)
         {
             flip.localScale = new Vector3(flip.localScale.x * -1, flip.localScale.y, flip.localScale.z);
-            Debug.Log("Direita");
+            facingLeft = false;
+            //Debug.Log("Direita");
          
         }
         else if(movementInput.x < 0 && flip.localScale.x < 0)
         {
             flip.localScale = new Vector3(flip.localScale.x * -1, flip.localScale.y, flip.localScale.z);
-            Debug.Log("Esquerda");
+            facingLeft = true;
+           // Debug.Log("Esquerda");
         }
     }
+
+ 
+  
 }

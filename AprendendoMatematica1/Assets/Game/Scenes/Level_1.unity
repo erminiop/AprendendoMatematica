@@ -194,6 +194,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &465187363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1241656884696417723, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+  m_PrefabInstance: {fileID: 1811470134}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572b83782f104ee418c4cc9bccf1b44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &465187372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7188855540925378823, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+  m_PrefabInstance: {fileID: 1811470134}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a09872b9acfa14ba976de5453c4ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &533071266
 GameObject:
   m_ObjectHideFlags: 3
@@ -6494,6 +6516,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 117150395161187362, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 117150395161187362, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 117150395161187362, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2
       objectReference: {fileID: 0}
@@ -6533,6 +6563,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 117150395161187362, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 117150395161187363, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
       propertyPath: m_Name
       value: InfectedRat
@@ -6554,9 +6588,33 @@ PrefabInstance:
       value: 0.94573426
       objectReference: {fileID: 0}
     - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: blackboard.objectParams.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
       propertyPath: blackboard.objectParams.Array.data[0]
       value: 
       objectReference: {fileID: 1307274329}
+    - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[2]
+      value: 
+      objectReference: {fileID: 465187363}
+    - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[3]
+      value: 
+      objectReference: {fileID: 465187372}
+    - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: blackboard.objectParamsNames.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: blackboard.objectParamsNames.Array.data[2]
+      value: SpeedMovement
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070772485218378531, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: blackboard.objectParamsNames.Array.data[3]
+      value: AIVision
+      objectReference: {fileID: 0}
     - target: {fileID: 1241656884696417723, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
       propertyPath: groundMaxSpeed
       value: 2
@@ -6596,6 +6654,18 @@ PrefabInstance:
     - target: {fileID: 6351802936867084311, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
       propertyPath: m_FlipY
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188855540925378823, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1307274329}
+    - target: {fileID: 7188855540925378823, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: visionAngle
+      value: 78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188855540925378823, guid: 2b5371ce0e89b0544941743176d63e14, type: 3}
+      propertyPath: visionRange
+      value: 4.91
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

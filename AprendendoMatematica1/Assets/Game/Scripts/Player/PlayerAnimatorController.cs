@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Platformer2D.Character;
 
@@ -39,7 +37,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
     private void OnDeath()
     {
-        animator.SetTrigger(CharacterMovementAnimationKeys.dead );
+        animator.SetTrigger(CharacterMovementAnimationKeys.dead);
     }
     private void OnDestroy()
     {

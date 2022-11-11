@@ -101,6 +101,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnDeath()
     {
+        playerMovement.StopImmediately();
+        enabled = false;
         //Debug.Log("Damage");
     }
 

@@ -10,7 +10,7 @@ public class TriggerDamage : MonoBehaviour
     {
         
         IDamageble damageble = collision.GetComponent<IDamageble>();
-        Debug.Log("Teste: "+damageble);
+        //Debug.Log("Teste: "+damageble);
         if (damageble != null)
         {
            // Debug.Log("Trigger: "+collision.name);

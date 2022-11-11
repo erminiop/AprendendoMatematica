@@ -6,13 +6,14 @@ using Platformer2D.Character;
 
 [RequireComponent(typeof(CharacterMovement2D))]
 [RequireComponent(typeof(Facing))]
+[RequireComponent (typeof(IDamageble))]
 public class EnemyAIController : MonoBehaviour
 {
     CharacterMovement2D enemyMovement;
     private Vector2 movementInput;
     Transform flip;
-    Animator animator;
     Facing enemyFacing;
+    IDamageble damageble;
     
     public void setMovimentInputX(float speedX)
     {
@@ -24,7 +25,13 @@ public class EnemyAIController : MonoBehaviour
         enemyMovement = GetComponent<CharacterMovement2D>();
         flip = GetComponent<Transform>();
         enemyFacing = GetComponent<Facing>();
-         
+        damageble = GetComponent<IDamageble>();
+        damageble.DeathEvent += OnDeath;
+        
+    }
+    private void OnDestroy()
+    {
+        if(damageble != null) { damageble.DeathEvent -= OnDeath; }
         
     }
 
@@ -34,6 +41,12 @@ public class EnemyAIController : MonoBehaviour
         enemyMovement.ProcessMovementInput(movementInput);
         //Debug.Log("Input"+movementInput);
         enemyFacing.updateFacing(movementInput,flip);
+    }
+
+    private void OnDeath()
+    {
+        Destroy(gameObject,1.0f);
+
     }
 
     

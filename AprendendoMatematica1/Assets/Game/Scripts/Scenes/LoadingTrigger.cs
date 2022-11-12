@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class LoadingTrigger : MonoBehaviour
@@ -15,7 +12,7 @@ public class LoadingTrigger : MonoBehaviour
     {
         if (collision.CompareTag(tagName.player))
         {
-            Loader.Instance.Loading(sceneName);
+            Loader.Instance.LoadSceneAsync(sceneName);
         }
     }
 }

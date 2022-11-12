@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -50,7 +50,7 @@ TagManager:
   - name: Player
     uniqueID: 1243549403
     locked: 0
-  - name: Enemies
+  - name: Enemy
     uniqueID: 3270099221
     locked: 0
   - name: Forground

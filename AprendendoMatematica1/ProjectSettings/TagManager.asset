@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Book
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
   - name: Chao
     uniqueID: 875652267
     locked: 0
+  - name: Book
+    uniqueID: 14991067
+    locked: 0
   - name: Player
     uniqueID: 1243549403
     locked: 0
@@ -55,4 +59,7 @@ TagManager:
     locked: 0
   - name: Forground
     uniqueID: 3720193771
+    locked: 0
+  - name: Menus
+    uniqueID: 558570273
     locked: 0

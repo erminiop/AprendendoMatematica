@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
     CharacterMovement2D playerMovement;
     SpriteRenderer spriteRenderer;
     IDamageble damageble;
+    int id_player=1;
+    Player player;
+    
     //Variaveis usadas para teste antes da animacao
-   // public Sprite crouchedSprite;
-   //public Sprite idleSprite;
+    // public Sprite crouchedSprite;
+    //public Sprite idleSprite;
 
     [Header("Camera")]
 
@@ -28,18 +31,23 @@ public class PlayerController : MonoBehaviour
     [Range(0.0f,5.0f)]
     [SerializeField] private float characterSpeedInfluence = 0.5f;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        
+        
         playerMovement = GetComponent<CharacterMovement2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
         damageble = GetComponent<IDamageble>();
 
         damageble.DeathEvent += OnDeath;
-
-        var w = GamesCodeDataSource.Instance.JogadorDAO.getJogador(1);
-        print(w.Nome_jogador);
+        player = returnPlayer(id_player);
+        
+        // var w = GamesCodeDataSource.Instance.JogadorDAO.getJogador(1);
+        print(player.name);
     }
 
     // Update is called once per frame
@@ -113,5 +121,14 @@ public class PlayerController : MonoBehaviour
             damageble.DeathEvent -= OnDeath;
         }
     }
+
+    private Player returnPlayer(int id_player)
+    {
+        Player return_Player = null;
+        return_Player = GamesCodeDataSource.Instance.JogadorDAO.getJogador(id_player);
+        return return_Player;
+    }
+
+
 
 }

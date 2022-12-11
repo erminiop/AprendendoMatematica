@@ -100,7 +100,7 @@ public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
         }
     }
     #endregion
-    #region Criacao Tabelas
+ /*   #region Criacao Tabelas
     protected void CreateTableJogador()
     {
         using (var con = Connection)
@@ -204,5 +204,5 @@ public class SqliteDataSource : MonoBehaviour, ISqliteConnectionProvider
 
         }
     }
-#endregion
+#endregion*/
 }
